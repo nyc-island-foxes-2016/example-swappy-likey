@@ -51,15 +51,15 @@ ActiveRecord::Schema.define(version: 20160129004007) do
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "swipes", force: :cascade do |t|
-    t.integer  "own_item_id"
-    t.integer  "other_item_id"
+    t.integer  "owned_item_id"
+    t.integer  "judged_item_id"
     t.boolean  "direction_like"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  add_index "swipes", ["other_item_id"], name: "index_swipes_on_other_item_id", using: :btree
-  add_index "swipes", ["own_item_id"], name: "index_swipes_on_own_item_id", using: :btree
+  add_index "swipes", ["judged_item_id"], name: "index_swipes_on_judged_item_id", using: :btree
+  add_index "swipes", ["owned_item_id"], name: "index_swipes_on_owned_item_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
